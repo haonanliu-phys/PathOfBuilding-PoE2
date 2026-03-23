@@ -43,5 +43,6 @@ src/Data/TimelessJewelData/*.bin
 # Simplegraphic Debugging
 runtime/imgui.ini
 
+.DS_Store
 
 src/poe_api_response.json
