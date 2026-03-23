@@ -71,7 +71,7 @@ function launch:OnFrame()
 		SetDrawColor(0, 0, 0, 0.75)
 		DrawImage(nil, 0, 0, screenW, screenH)
 		SetDrawColor(1, 1, 1)
-		DrawString(0, screenH/2, "CENTER", 24, "FIXED", self.doRestart)
+		DrawString(0, screenH/2, "CENTER", 48, "FIXED", self.doRestart)
 		Restart()
 	end
 end
@@ -194,5 +194,5 @@ function launch:DrawPopup(r, g, b, fmt, ...)
 	DrawImage(nil, ox + 2, oy + 2, w - 4, h - 4)
 	SetDrawColor(1, 1, 1)
 	DrawImage(nil, ox + 4, oy + 4, w - 8, h - 8)
-	DrawString(0, oy + 10, "CENTER", 20, "VAR", txt)
+	DrawString(0, oy + 10, "CENTER", 40, "VAR", txt)
 end

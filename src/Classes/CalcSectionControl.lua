@@ -87,7 +87,7 @@ end
 function CalcSectionClass:UpdateSize()
 	self.enabled = self.calcsTab:CheckFlag(self)
 	if not self.enabled then
-		self.height = 22
+		self.height = 44
 		return
 	end
 	local x, y = self:GetPos()
@@ -108,21 +108,21 @@ function CalcSectionClass:UpdateSize()
 					colData.xOffset = xOffset
 					colData.yOffset = yOffset
 					colData.width = subSec.data.colWidth or width - 136
-					colData.height = 18
+					colData.height = 36
 					xOffset = xOffset + colData.width
 				end
 				yOffset = yOffset + 18
-				self.height = self.height + 18
-				tempHeight = tempHeight + 18
+				self.height = self.height + 36
+				tempHeight = tempHeight + 36
 			end
 			if subSec.collapsed then
 				rowData.enabled = false
 			end
 		end
 		if self.enabled and not subSec.collapsed then
-			self.height = self.height + 22
+			self.height = self.height + 44
 		else
-			self.height = self.height - tempHeight + 20
+			self.height = self.height - tempHeight + 40
 			yOffset = yOffset - tempHeight - 2
 		end
 	end
@@ -131,7 +131,7 @@ function CalcSectionClass:UpdateSize()
 			self:updateFunc()
 		end
 	else
-		self.height = 22
+		self.height = 44
 	end
 end
 
@@ -237,16 +237,16 @@ function CalcSectionClass:Draw(viewPort, noTooltip)
 		SetDrawColor(0.10, 0.10, 0.10)
 		-- Draw label
 		if not self.enabled then
-			DrawString(x + 3, lineY + 3, "LEFT", 16, "VAR BOLD", "^8"..subSec.label)
+			DrawString(x + 3, lineY + 3, "LEFT", 32, "VAR BOLD", "^8"..subSec.label)
 		else
 			local textColor = "^7"
 			if self.calcsTab:SearchMatch(subSec.label) then
 				textColor = colorCodes.HIGHLIGHT
 			end
-			DrawString(x + 3, lineY + 3, "LEFT", 16, "VAR BOLD", textColor..subSec.label..":")
+			DrawString(x + 3, lineY + 3, "LEFT", 32, "VAR BOLD", textColor..subSec.label..": ")
 			if subSec.data.extra then
-				local x = x + 3 + DrawStringWidth(16, "VAR BOLD", subSec.label) + 10
-				DrawString(x, lineY + 3, "LEFT", 16, "VAR", "^7"..self:FormatStr(subSec.data.extra, actor))
+				local x = x + 3 + DrawStringWidth(32, "VAR BOLD", subSec.label) + 10
+				DrawString(x, lineY + 3, "LEFT", 32, "VAR", "^7"..self:FormatStr(subSec.data.extra, actor))
 			end
 		end
 		-- Draw line below label
@@ -279,7 +279,7 @@ function CalcSectionClass:Draw(viewPort, noTooltip)
 						if self.calcsTab:SearchMatch(rowData.label) then
 							textColor = colorCodes.HIGHLIGHT
 						end
-						DrawString(x + 132, lineY + 2, "RIGHT_X", 16, "VAR", textColor..rowData.label..":")
+						DrawString(x + 132, lineY + 2, "RIGHT_X", 32, "VAR", textColor..rowData.label..": ")
 					end
 					for colour, colData in ipairs(rowData) do
 						-- Draw column separator at the left end of the cell

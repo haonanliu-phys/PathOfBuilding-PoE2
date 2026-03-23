@@ -794,7 +794,7 @@ function main:OpenMessagePopup(title, msg)
 	controls.close = new("ButtonControl", nil, {0, 40 + numMsgLines * 16, 80, 20}, "Ok", function()
 		main:ClosePopup()
 	end)
-	return self:OpenPopup(m_max(DrawStringWidth(16, "VAR", msg) + 30, 190), 70 + numMsgLines * 16, title, controls, "close")
+	return self:OpenPopup(m_max(DrawStringWidth(32, "VAR", msg) + 30, 190), 70 + numMsgLines * 32, title, controls, "close")
 end
 
 function main:OpenConfirmPopup(title, msg, confirmLabel, onConfirm)
@@ -812,7 +812,7 @@ function main:OpenConfirmPopup(title, msg, confirmLabel, onConfirm)
 	t_insert(controls, new("ButtonControl", nil, {5 + m_ceil(confirmWidth/2), 40 + numMsgLines * 16, confirmWidth, 20}, "Cancel", function()
 		main:ClosePopup()
 	end))
-	return self:OpenPopup(m_max(DrawStringWidth(16, "VAR", msg) + 30, 190), 70 + numMsgLines * 16, title, controls, "confirm")
+		return self:OpenPopup(m_max(DrawStringWidth(32, "VAR", msg) + 30, 190), 70 + numMsgLines * 32, title, controls, "confirm")
 end
 
 function main:OpenNewFolderPopup(path, onClose)

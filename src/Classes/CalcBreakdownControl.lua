@@ -86,9 +86,9 @@ function CalcBreakdownClass:SetBreakdownData(displayData, pinned)
 					if row[col.key] then
 						local _, num = string.gsub(row[col.key], "%d%d%d%d", "") -- count how many commas will be added
 						if main.showThousandsSeparators and num > 0 then
-							col.width = m_max(col.width or 0, DrawStringWidth(16, "VAR", col.label) + 6, DrawStringWidth(12, "VAR", row[col.key]) + 6 + (4 * num))
+							col.width = m_max(col.width or 0, DrawStringWidth(32, "VAR", col.label) + 6, DrawStringWidth(24, "VAR", row[col.key]) + 6 + (4 * num))
 						else 
-							col.width = m_max(col.width or 0, DrawStringWidth(16, "VAR", col.label) + 6, DrawStringWidth(12, "VAR", row[col.key]) + 6)
+							col.width = m_max(col.width or 0, DrawStringWidth(32, "VAR", col.label) + 6, DrawStringWidth(24, "VAR", row[col.key]) + 6)
 						end
 					end
 				end
@@ -98,13 +98,13 @@ function CalcBreakdownClass:SetBreakdownData(displayData, pinned)
 			end
 			section.height = #section.rowList * 14 + 20
 			if section.label then
-				self.contentWidth = m_max(self.contentWidth, 6 + DrawStringWidth(16, "VAR", section.label..":"))
+				self.contentWidth = m_max(self.contentWidth, 6 + DrawStringWidth(32, "VAR", section.label.":"))
 				section.height = section.height + 16
 			end
 			if section.footer then
-				self.contentWidth = m_max(self.contentWidth, 6 + DrawStringWidth(12, "VAR", section.footer))
-				local _, lines = string.gsub(section.footer, "\n", "\n") -- counts newlines in the string
-				section.height = section.height + 12 * (lines + 1)
+			self.contentWidth = m_max(self.contentWidth, 6 + DrawStringWidth(24, "VAR", section.footer))
+			local _, lines = string.gsub(section.footer, "\n", "\n") -- counts newlines in the string
+			section.height = section.height + 24 * (lines + 1)
 			end
 		end
 		self.contentWidth = m_max(self.contentWidth, section.width)
@@ -546,7 +546,7 @@ function CalcBreakdownClass:DrawBreakdownTable(viewPort, x, y, section)
 	local cursorX, cursorY = GetCursorPos()
 	if section.label then
 		-- Draw table label if able
-		DrawString(x + 2, y, "LEFT", 16, "VAR", "^7"..section.label..":")
+		DrawString(x + 2, y, "LEFT", 32, "VAR", "^7"..section.label..": ")
 		y = y + 16
 	end
 	local colX = x + 4
@@ -560,7 +560,7 @@ function CalcBreakdownClass:DrawBreakdownTable(viewPort, x, y, section)
 				DrawImage(nil, colX - 2, y, 1, section.height - (section.label and 16 or 0) - (section.footer and 12 or 0))
 			end
 			SetDrawColor(1, 1, 1)
-			DrawString(colX, y + 2, "LEFT", 16, "VAR", col.label)
+			DrawString(colX, y + 2, "LEFT", 32, "VAR", col.label)
 			colX = colX + col.width
 		end
 	end
@@ -576,11 +576,11 @@ function CalcBreakdownClass:DrawBreakdownTable(viewPort, x, y, section)
 				local _, notes = string.gsub(row[col.key], " to ", " ") -- counts " to " in the string
 				local _, paren = string.gsub(row[col.key], "%b()", " ") -- counts parenthesis in the string
 				if (alpha == 0 or notes > 0 or paren > 0) and col.right then
-					DrawString(col.x + col.width - 4, rowY + 1, "RIGHT_X", 12, "VAR", "^7"..formatNumSep(tostring(row[col.key])))
+					DrawString(col.x + col.width - 4, rowY + 1, "RIGHT_X", 24, "VAR", "^7"..formatNumSep(tostring(row[col.key])))
 				elseif (alpha == 0 or notes > 0 or paren > 0) then
-					DrawString(col.x, rowY + 1, "LEFT", 12, "VAR", "^7"..formatNumSep(tostring(row[col.key])))
+					DrawString(col.x, rowY + 1, "LEFT", 24, "VAR", "^7"..formatNumSep(tostring(row[col.key])))
 				else
-					DrawString(col.x, rowY + 1, "LEFT", 12, "VAR", "^7"..tostring(row[col.key]))
+					DrawString(col.x, rowY + 1, "LEFT", 24, "VAR", "^7"..tostring(row[col.key]))
 				end
 				local ttFunc = row[col.key.."Tooltip"]
 				local ttNode = row[col.key.."Node"]
@@ -622,7 +622,7 @@ function CalcBreakdownClass:DrawBreakdownTable(viewPort, x, y, section)
 	end
 	if section.footer then
 		-- Draw table footer if able
-		DrawString(x + 2, rowY, "LEFT", 12, "VAR", "^7"..section.footer)
+		DrawString(x + 2, rowY, "LEFT", 24, "VAR", "^7"..section.footer)
 	end
 end
 

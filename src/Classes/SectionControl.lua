@@ -25,5 +25,5 @@ function SectionClass:Draw()
 	SetDrawColor(0, 0, 0)
 	DrawImage(nil, x + 7, y - 7, labelWidth + 4, 16)
 	SetDrawColor(1, 1, 1)
-	DrawString(x + 9, y - 6, "LEFT", 14, "VAR", label)
+	DrawString(x + 9, y - 6, "LEFT", 28, "VAR", label)
 end

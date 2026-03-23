@@ -417,8 +417,8 @@ function main:OnFrame()
 			SetDrawColor(0.1, 0.1, 0.1)
 			DrawImage(nil, 0, self.screenH - self.mainBarHeight + 4, 308, self.mainBarHeight - 4)
 			SetDrawColor(1, 1, 1)
-			DrawString(4, self.screenH - self.mainBarHeight + 8, "LEFT", 20, "VAR", self.toastMessages[1]:gsub("\n.*",""))
-			DrawString(4, self.screenH - self.mainBarHeight + 28, "LEFT", 16, "VAR", self.toastMessages[1]:gsub("^[^\n]*\n?",""))
+			DrawString(4, self.screenH - self.mainBarHeight + 8, "LEFT", 40, "VAR", self.toastMessages[1]:gsub("\n.*",""))
+			DrawString(4, self.screenH - self.mainBarHeight + 28, "LEFT", 32, "VAR", self.toastMessages[1]:gsub("^[^\n]*\n?",""))
 		end
 	end
 
@@ -444,7 +444,7 @@ function main:OnFrame()
 		SetDrawColor(0.15, 0.15, 0.15, 0.75)
 		DrawImage(nil, cursorX, cursorY - 8, strWidth + 2, 18)
 		SetDrawColor(1, 1, 1)
-		DrawString(cursorX + 1, cursorY - 7, "LEFT", 16, "VAR", self.showDragText)
+		DrawString(cursorX + 1, cursorY - 7, "LEFT", 32, "VAR", self.showDragText)
 		self.showDragText = nil
 	end
 
@@ -1595,7 +1595,7 @@ function main:OpenConfirmPopup(title, msg, confirmLabel, onConfirm, extraLabel, 
 		placeButton(confirmWidth, confirmLabel, onConfirm, true)
 		placeButton(extraWidth, extraLabel, onExtra)
 		placeButton(cancelWidth, "Cancel", function() end)
-		return self:OpenPopup(m_max(DrawStringWidth(16, "VAR", msg) + 30, totalWidth + 40), 70 + numMsgLines * 16, title, controls, "confirm")
+		return self:OpenPopup(m_max(DrawStringWidth(32, "VAR", msg) + 30, totalWidth + 40), 70 + numMsgLines * 32, title, controls, "confirm")
 	else
 		-- Two button layout (original)
 		controls.confirm = new("ButtonControl", nil, {-5 - m_ceil(confirmWidth/2), 40 + numMsgLines * 16, confirmWidth, 20}, confirmLabel, function()
@@ -1605,7 +1605,7 @@ function main:OpenConfirmPopup(title, msg, confirmLabel, onConfirm, extraLabel, 
 		t_insert(controls, new("ButtonControl", nil, {5 + m_ceil(confirmWidth/2), 40 + numMsgLines * 16, confirmWidth, 20}, "Cancel", function()
 			main:ClosePopup()
 		end))
-		return self:OpenPopup(m_max(DrawStringWidth(16, "VAR", msg) + 30, 190), 70 + numMsgLines * 16, title, controls, "confirm")
+		return self:OpenPopup(m_max(DrawStringWidth(32, "VAR", msg) + 30, 190), 70 + numMsgLines * 32, title, controls, "confirm")
 	end
 end
 

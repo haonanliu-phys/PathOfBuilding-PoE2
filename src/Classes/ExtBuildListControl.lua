@@ -272,7 +272,7 @@ function ExtBuildListControlClass:Draw(viewPort, noTooltip)
 
 	-- write status message
 	if self.activeListProvider.statusMsg then
-		self:DrawString(x, currentHeight, "LEFT", 16, self.font, self.activeListProvider.statusMsg)
+		self:DrawString(x, currentHeight, "LEFT", 32, self.font, self.activeListProvider.statusMsg)
 	end
 
 	local scrollBarV = self.controls.scrollBarV
@@ -313,7 +313,7 @@ function ExtBuildListControlClass:Draw(viewPort, noTooltip)
 			if build.buildName then
 				for _, line in pairs(self:splitStringByWidth(build.buildName, self.width() - 180, "VAR BOLD")) do
 					-- lineCount = lineCount + 1
-					self:DrawString(x, currentHeight, "LEFT", 18, "VAR BOLD", line)
+					self:DrawString(x, currentHeight, "LEFT", 36, "VAR BOLD", line)
 					currentHeight = currentHeight + 18
 				end
 			end
@@ -325,7 +325,7 @@ function ExtBuildListControlClass:Draw(viewPort, noTooltip)
 			SetDrawColor(1, 1, 1)
 			if build.mainSkill and build.mainSkill ~= "" then
 				for _, line in pairs(self:splitStringByWidth(build.mainSkill, self.width() - 125, self.font)) do
-					self:DrawString(x, currentHeight, "LEFT", 16, self.font, line)
+					self:DrawString(x, currentHeight, "LEFT", 32, self.font, line)
 					currentHeight = currentHeight + 20
 				end
 				-- decorator line
@@ -334,13 +334,13 @@ function ExtBuildListControlClass:Draw(viewPort, noTooltip)
 
 			-- author
 			if build.author then
-				self:DrawString(x, currentHeight, "LEFT", 14, self.font, s_format('%s', build.author))
+					self:DrawString(x, currentHeight, "LEFT", 28, self.font, s_format('%s', build.author))
 			end
 
 			-- version
 			if build.version then
 				local authorWidth = build.author and DrawStringWidth(14, self.font, s_format('%s', build.author)) or 0
-				self:DrawString(x + authorWidth + 20, currentHeight, "LEFT", 14, self.font, s_format('%s', build.version))
+					self:DrawString(x + authorWidth + 20, currentHeight, "LEFT", 28, self.font, s_format('%s', build.version))
 				SetDrawColor(0.5, 0.5, 0.5)
 				if authorWidth then
 					self:DrawImage(nil, x + authorWidth + 10, currentHeight - 7, 1, 28)
@@ -375,16 +375,16 @@ function ExtBuildListControlClass:Draw(viewPort, noTooltip)
 			local lifeWidth = DrawStringWidth(14, self.font, lifeText)
 			local ehpWidth = DrawStringWidth(14, self.font, ehpText)
 			if (dpsWidth + lifeWidth + ehpWidth < self.width() - 30) then
-				self:DrawString(x, currentHeight, "LEFT", 14, self.font, dpsText)
+					self:DrawString(x, currentHeight, "LEFT", 28, self.font, dpsText)
 				SetDrawColor(0.5, 0.5, 0.5)
 				self:DrawImage(nil, x + dpsWidth + 10, currentHeight - 7, 1, 28)
 				SetDrawColor(1, 1, 1)
-				self:DrawString(x + dpsWidth + 20, currentHeight, "LEFT", 14, self.font, lifeText)
+					self:DrawString(x + dpsWidth + 20, currentHeight, "LEFT", 28, self.font, lifeText)
 				SetDrawColor(0.5, 0.5, 0.5)
 				self:DrawImage(nil, x + dpsWidth + lifeWidth + 30, currentHeight - 7, 1, 28)
 				self:DrawImage(nil, x + dpsWidth + lifeWidth + ehpWidth + 50, currentHeight - 7, 1, 28)
 				SetDrawColor(1, 1, 1)
-				self:DrawString(x + dpsWidth + lifeWidth + 40, currentHeight, "LEFT", 14, self.font, ehpText)
+					self:DrawString(x + dpsWidth + lifeWidth + 40, currentHeight, "LEFT", 28, self.font, ehpText)
 				currentHeight = currentHeight + 16
 				-- decorator line
 				currentHeight = addSeparator(currentHeight, portraitHeight)
@@ -395,7 +395,7 @@ function ExtBuildListControlClass:Draw(viewPort, noTooltip)
 				currentHeight = currentHeight + 4
 				for _, metadata in pairs(build.metadata) do
 					SetDrawColor(1, 1, 1)
-					self:DrawString(x, currentHeight, "LEFT", 14, self.font, metadata.key .. ": " .. metadata.value)
+						self:DrawString(x, currentHeight, "LEFT", 28, self.font, metadata.key .. ": " .. metadata.value)
 					currentHeight = currentHeight + 16
 					currentHeight = addSeparator(currentHeight, portraitHeight)
 				end

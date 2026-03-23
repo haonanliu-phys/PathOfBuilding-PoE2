@@ -54,7 +54,7 @@ function PopupDialogClass:Draw(viewPort)
 	SetDrawColor(0, 0, 0)
 	DrawImage(nil, titleX + 2, y - 8, titleWidth + 4, 20)
 	SetDrawColor(1, 1, 1)
-	DrawString(titleX + 4, y - 7, "LEFT", 16, "VAR", title)
+	DrawString(titleX + 4, y - 7, "LEFT", 32, "VAR", title)
 	if self.scrollBarFunc then
 		self.scrollBarFunc()
 	end

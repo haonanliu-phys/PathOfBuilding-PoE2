@@ -1759,7 +1759,7 @@ function PassiveTreeViewClass:DrawAllocMode(allocMode, viewPort)
 	DrawImage(nil, viewPort.x, viewPort.y + viewPort.height - 20 , viewPort.width, 20)
 
 	SetDrawColor(1, 1, 1, 1)
-	DrawString(viewPort.x + 2, viewPort.y + viewPort.height - 20 + 2, "LEFT", 16, "VAR", string.format("^7Allocating Weapon set %d Mode", allocMode))
+	DrawString(viewPort.x + 2, viewPort.y + viewPort.height - 20 + 2, "LEFT", 32, "VAR", string.format("^7Allocating Weapon set %d Mode", allocMode))
 
 	SetDrawColor(1, 1, 1, 1)
 
